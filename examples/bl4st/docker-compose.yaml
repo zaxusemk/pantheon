@@ -1,0 +1,7 @@
+services:
+  bl4st:
+    image: zaxusemk/pantheon-bl4st
+    container_name: pantheon-bl4st
+    ports:
+      - 8040:80
+    restart: unless-stopped
