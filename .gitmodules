@@ -1,6 +1,6 @@
 [submodule "bl4st"]
-	path = bl4st
+	path = submodules/bl4st
 	url = https://github.com/emptyflash/bl4st
 [submodule "hydra"]
-	path = hydra
+	path = submodules/hydra
 	url = https://github.com/hydra-synth/hydra
