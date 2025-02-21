@@ -1,4 +1,7 @@
-platforms := "linux/amd64,linux/arm64"
+htmlpublic := "/config/www"
+
+build-full:
+  docker build -t zaxusemk/pantheon --target pantheon-full --build-arg HTMLPUBLIC={{htmlpublic}} .
 
 build-bl4st:
-    docker buildx build --load --platform {{platforms}} -t zaxusemk/pantheon-bl4st -f pantheon-bl4st.dockerfile .
+  docker build -t zaxusemk/pantheon-bl4st --target pantheon-bl4st --build-arg HTMLPUBLIC={{htmlpublic}} .
