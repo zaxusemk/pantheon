@@ -21,4 +21,5 @@ clean-images:
   docker image rm -f zaxusemk/pantheon-bl4st
   docker image rm -f zaxusemk/pantheon-hydra
   docker image rm -f zaxusemk/pantheon-openscope
+  docker image rm -f zaxusemk/pantheon-it-tools
   docker image rm -f zaxusemk/pantheon

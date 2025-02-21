@@ -22,10 +22,22 @@ WORKDIR /openscope
 RUN npm install
 RUN npm run build
 
-#build it-tools
+#build it-tools standalone
 FROM node:current AS it-tools
-ENV NPM_CONFIG_LOGLEVEL warn
-ENV CI true
+ENV NPM_CONFIG_LOGLEVEL=warn
+ENV CI=true
+ENV BASE_URL="/"
+WORKDIR /app
+COPY submodules/it-tools/package.json submodules/it-tools/pnpm-lock.yaml ./
+RUN npm install -g pnpm && pnpm i --frozen-lockfile
+COPY submodules/it-tools .
+RUN pnpm build
+
+#build it-tools for pantheon-full (needs base-url set)
+FROM node:current AS it-tools-full
+ENV NPM_CONFIG_LOGLEVEL=warn
+ENV CI=true
+ENV BASE_URL="/it-tools/"
 WORKDIR /app
 COPY submodules/it-tools/package.json submodules/it-tools/pnpm-lock.yaml ./
 RUN npm install -g pnpm && pnpm i --frozen-lockfile
@@ -59,5 +71,5 @@ COPY src/index.html $HTMLPUBLIC/index.html
 COPY --from=bl4st $HTMLPUBLIC/bl4st $HTMLPUBLIC/bl4st
 COPY --from=hydra hydra/dist $HTMLPUBLIC/hydra
 COPY --from=openscope /openscope/public $HTMLPUBLIC/openscope
-COPY --from=it-tools /app/dist $HTMLPUBLIC/it-tools
+COPY --from=it-tools-full /app/dist $HTMLPUBLIC/it-tools
 

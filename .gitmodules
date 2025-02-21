@@ -13,3 +13,6 @@
 	url = https://github.com/CorentinTh/it-tools.git
 [submodule "submodules/it-tools/"]
 	branch = v2024.10.22-7ca5933
+[submodule "submodules/adarkroom"]
+	path = submodules/adarkroom
+	url = https://github.com/doublespeakgames/adarkroom.git
