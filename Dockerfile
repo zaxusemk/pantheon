@@ -15,6 +15,18 @@ RUN npm install
 RUN echo "app.route('/hydra', mainView)" >> index.js
 RUN npm run build
 
+# build A Dark Room
+FROM scratch AS adarkroom
+ARG HTMLPUBLIC
+COPY submodules/adarkroom/audio $HTMLPUBLIC/adarkroom/audio
+COPY submodules/adarkroom/css $HTMLPUBLIC/adarkroom/css
+COPY submodules/adarkroom/img $HTMLPUBLIC/adarkroom/img
+COPY submodules/adarkroom/lang $HTMLPUBLIC/adarkroom/lang
+COPY submodules/adarkroom/lib $HTMLPUBLIC/adarkroom/lib
+COPY submodules/adarkroom/script $HTMLPUBLIC/adarkroom/script
+COPY submodules/adarkroom/*.html $HTMLPUBLIC/adarkroom/
+COPY submodules/adarkroom/*.ico $HTMLPUBLIC/adarkroom/
+
 # build openscope
 FROM node:current AS openscope
 COPY submodules/openscope/ /openscope
@@ -44,6 +56,11 @@ RUN npm install -g pnpm && pnpm i --frozen-lockfile
 COPY submodules/it-tools .
 RUN pnpm build
 
+# build the pantheon-adarkroom image
+FROM lscr.io/linuxserver/nginx AS pantheon-adarkroom
+ARG HTMLPUBLIC
+COPY --from=adarkroom $HTMLPUBLIC/adarkroom $HTMLPUBLIC
+
 # build the pantheon-it-tools image
 FROM lscr.io/linuxserver/nginx AS pantheon-it-tools
 ARG HTMLPUBLIC
@@ -72,4 +89,5 @@ COPY --from=bl4st $HTMLPUBLIC/bl4st $HTMLPUBLIC/bl4st
 COPY --from=hydra hydra/dist $HTMLPUBLIC/hydra
 COPY --from=openscope /openscope/public $HTMLPUBLIC/openscope
 COPY --from=it-tools-full /app/dist $HTMLPUBLIC/it-tools
+COPY --from=adarkroom $HTMLPUBLIC/adarkroom $HTMLPUBLIC/adarkroom
 
