@@ -34,7 +34,7 @@ WORKDIR /openscope
 RUN npm install
 RUN npm run build
 
-#build it-tools standalone
+# build it-tools standalone
 FROM node:current AS it-tools
 ENV NPM_CONFIG_LOGLEVEL=warn
 ENV CI=true
@@ -45,7 +45,8 @@ RUN npm install -g pnpm && pnpm i --frozen-lockfile
 COPY submodules/it-tools .
 RUN pnpm build
 
-#build it-tools for pantheon-full (needs base-url set)
+# build it-tools for pantheon-full (needs base-url set)
+# HACK - separate build due to differing BASE_URL in pantheon-full
 FROM node:current AS it-tools-full
 ENV NPM_CONFIG_LOGLEVEL=warn
 ENV CI=true
