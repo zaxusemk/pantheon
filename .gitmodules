@@ -4,3 +4,12 @@
 [submodule "hydra"]
 	path = submodules/hydra
 	url = https://github.com/hydra-synth/hydra
+[submodule "submodules/openscope"]
+	path = submodules/openscope
+	url = https://github.com/openscope/openscope.git
+	branch = v6.28.0
+[submodule "submodules/it-tools"]
+	path = submodules/it-tools
+	url = https://github.com/CorentinTh/it-tools.git
+[submodule "submodules/it-tools/"]
+	branch = v2024.10.22-7ca5933

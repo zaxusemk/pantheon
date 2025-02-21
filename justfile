@@ -1,6 +1,6 @@
 htmlpublic := "/config/www"
 
-build-all: build-bl4st build-hydra build-full
+build-all: build-bl4st build-hydra build-openscope build-it-tools build-full
 
 build-full:
   docker build -t zaxusemk/pantheon --target pantheon-full --build-arg HTMLPUBLIC={{htmlpublic}} .
@@ -11,7 +11,14 @@ build-bl4st:
 build-hydra:
   docker build -t zaxusemk/pantheon-hydra --target pantheon-hydra --build-arg HTMLPUBLIC={{htmlpublic}} .
 
+build-openscope:
+  docker build -t zaxusemk/pantheon-openscope --target pantheon-openscope --build-arg HTMLPUBLIC={{htmlpublic}} .
+
+build-it-tools:
+  docker build -t zaxusemk/pantheon-it-tools --target pantheon-it-tools --build-arg HTMLPUBLIC={{htmlpublic}} .
 
 clean-images:
   docker image rm -f zaxusemk/pantheon-bl4st
+  docker image rm -f zaxusemk/pantheon-hydra
+  docker image rm -f zaxusemk/pantheon-openscope
   docker image rm -f zaxusemk/pantheon
