@@ -8,6 +8,7 @@ These are the external submodules we'd like to add to Pantheon. Requests welcome
   - [ ] strudel
 - Tools
   - [x] IT Tools
+  - [ ] Moodist 
 - Games
   - [x] Openscope
   - [x] A Dark Room
