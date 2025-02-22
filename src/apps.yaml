@@ -1,0 +1,64 @@
+
+# APP TEMPLATE
+# app:
+#   name: ""
+#   description: ""
+#   site_link: ""
+#   source_link: ""
+#   license_path: ""
+#   pantheon_url: ""
+#   category: ""
+
+
+
+_config:
+  categories:
+    - "Live Coding"
+    - "Tools"
+    - "Games"
+  submodule_path: "../submodules/"
+
+bl4st:
+  name: "bl4st"
+  description: "Livecodable real-time fractal flames in the browser."
+  site_link: "https://emptyfla.sh/bl4st"
+  source_link: "https://github.com/emptyflash/bl4st"
+  license_path: ""
+  pantheon_url: "./bl4st/"
+  category: "Live Coding"
+
+hydra:
+  name: "Hydra"
+  description: "Livecoding networked visuals in the browser."
+  site_link: "https://hydra.ojack.xyz/"
+  source_link: "https://github.com/hydra-synth/hydra"
+  license_path: "hydra/LICENSE"
+  pantheon_url: "./hydra/"
+  category: "Live Coding"
+
+openscope:
+  name: "openScope"
+  description: "Air Traffic Conrol simulator"
+  site_link: "http://www.openscope.io/"
+  source_link: "https://github.com/openscope/openscope"
+  license_path: "openscope/LICENSE.md"
+  pantheon_url: "./openscope/"
+  category: "Games"
+
+it-tools:
+  name: "IT-Tools"
+  description: "Collection of handy online tools for developers, with great UX."
+  site_link: "https://it-tools.tech/"
+  source_link: "https://github.com/CorentinTh/it-tools"
+  license_path: "it-tools/LICENSE"
+  pantheon_url: "./it-tools/"
+  category: "Tools"
+
+adarkroom:
+  name: "A Dark Room"
+  description: "A minimalist text adventure game for your browser."
+  site_link: "http://adarkroom.doublespeakgames.com/"
+  source_link: "https://github.com/doublespeakgames/adarkroom"
+  license_path: "adarkroom/LICENSE.md"
+  pantheon_url: "./adarkroom/"
+  category: "Games"
